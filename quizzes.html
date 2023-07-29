@@ -3,20 +3,38 @@
     <head>
         <meta charset="UTF-8">
         <title> Game Website for Kids</title>
+        <script src="https://kit.fontawesome.com/14f0084dd9.js" crossorigin="anonymous"></script><meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            
+            .container {
+                border: 3px solid black;
+                border-radius: 10px;
+                width: 60%;
+                padding: 20px;
+                display: none;
+            }
+    
+            button {
+                margin-top: 10px;
+            }
+            
+        </style>
     </head>
     <body>
       
         <!--START OF HEADER-->
         <header>
     <div>
-<img id="E.G.O.Logo" src="E.G.O.Logo.png" alt="Educational Games Online"/>
+        <img src="asset/images/E.G.O.Logo.jpg" alt="Educational Games Online" width="50" height="100">
 <ul>
     <li><a href ="index.html">Home</a></li>
     <li><a href ="about.html">About</a></li>
     <li><a href ="games.html">Games</a></li>
     <li><a href ="marvel.html">Marvel</a></li>
-    <li><a href ="environment.html">Environments</a></li>
-    <li><a href ="Reading.html">Reading</a></li>
+
+    
 </ul>
 </div>
         </header>
@@ -27,9 +45,61 @@
 
               <div class="Quizzes">
                 <h3>Quizzes</h3>
-                <img src="assest/images/kruger.png"  alt="Kruger National Park" style="width: 100%">
+                <img src="asset/images/quizze.jpg"  alt="Quizzes images" style="width: 100%">
+
+                
+                    <div class="container">
+                        Q1 what is 100+200?<hr>
+                        <input type="radio" name="question1" id="correct1">300<br>
+                        <input type="radio" name="question1">400<br>
+                        <input type="radio" name="question1">150<br>
+                        <input type="radio" name="question1">600<br>
+                        <button class="next" onclick="next(1)">NEXT</button>
+                    </div>
+                
+                    <div class="container">
+                        Q2 what is 100+300?<hr>
+                        <input type="radio" name="question2" >300<br>
+                        <input type="radio" name="question2" id="correct2">400<br>
+                        <input type="radio" name="question2">150<br>
+                        <input type="radio" name="question2">600<br>
+                        <button class="next" onclick="next(2)">NEXT</button>
+                    </div>
+                
+                    <div class="container">
+                        Q3 what is 300+200?<hr>
+                        <input type="radio" name="question3" >300<br>
+                        <input type="radio" name="question3">400<br>
+                        <input type="radio" name="question3">150<br>
+                        <input type="radio" name="question3" id="correct3">500<br>
+                        <button onclick="result()">SUBMIT QUIZ</button>
+                    </div>
+                    <script>
+                        // displaying the first block of question
+                        document.getElementsByClassName('container')[0].style.display = "block";
+                
+                        // DEFINING THE NEXT FUNCTION
+                        function next(id) {
+                            document.getElementsByClassName('container')[id-1].style.display = "none";
+                            document.getElementsByClassName('container')[id].style.display = "block";
+                        }
+                        //getting final result
+                        function result() {
+                            var score = 0;
+                            if (document.getElementById('correct1').checked) {
+                                score++;
+                            }
+                            if (document.getElementById('correct2').checked) {
+                                score++;
+                            }
+                            if (document.getElementById('correct3').checked) {
+                                score++;
+                            }
+                            alert("your score is: "+ score);
+                        }
+                    </script>
                
-                <p>If you get the answer correctly give your self a (thumbsup) otherwise try again</p>
+                <p>If you get the answer correctly give your self a <i class="fa-solid fa-thumbs-up"></i> otherwise try again</p>
                 <h3>Learn Some Vocabulary</h3>
                 <p> put some vocabulary here</p>
               </div> 
