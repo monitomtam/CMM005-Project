@@ -1,3 +1,4 @@
+@import"templatecolours.css";
 html {
     height: 100%;
   }
@@ -7,8 +8,121 @@ html {
     padding:0;
     font-family: 'poppins', sans-serif;
     box-sizing: border-box;
+    text-transform: capitalize;
+    list-style: none;
   }
 
+
+  header{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    background: black;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 3px;
+    z-index: 1000;
+    text-decoration-color: coral;
+    }
+    
+    .logo{
+      text-decoration: none;
+      
+      font-size: 35px;
+      margin-left: 40px;
+  }
+  .logo.hover{
+      color: red;
+      transition: 3s ease-in;
+  }
+  ul li{
+    display: inline-block;
+    margin-right: 30px;
+    list-style: none;
+}
+ul li a{
+    text-decoration: none;
+    color: orangered;
+    font-size: 20px;
+}
+ul li a:hover{
+    color: white;
+    transition: 3s ease-in;
+}
+.button{
+    text-decoration: none;
+    color: rgb(250, 243, 247);
+    margin-right: 40px;
+    font-size: 20px;
+    border: 1px solid rgb(252, 248, 248);
+    background: transparent;
+    padding: 5px 10px;
+    border-radius: 5px;   
+}
+.button:hover{
+    border:1px solid red;
+    transition: 3s ease-in;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.box {
+  width: 300px;
+
+}
+.box h2 {
+  color: #fff;
+  background: #03a9f4;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: 700;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.box ul {
+  position: relative;
+  background: #fff;
+}
+.box ul li {
+  list-style: none;
+  padding: 10px;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 5px 25px rgba (0,0,0,.1);
+  transition: transform 0.5s;
+}
+.box ul li:hover {
+  transform: scale(1.1);
+  z-index: 100;
+  background: #25bcff;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 2);
+  color:#fff;
+}
+.box ul li span{
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  background: #25bcff;
+  color: #fff;
+  border-radius: 50%;
+  margin-right: 10;
+  font-size: 600;
+  transform: translateY(-20px);
+}
+.box ul li span
+
+
+/*
   .container2{
     width: 100%;
     min-height: 100vh;
@@ -115,3 +229,98 @@ html {
     color:#AA3939;
     height: 80px;
   }
+
+  .container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 420px;
+    justify-content: center;
+    
+  }
+  .container .box {
+    position: relative;
+    height: 160px;
+    width: 160px;
+    border-radius: 12px;
+    border: 2px solid #333;
+  }
+  .box .image {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    background-image: url("bubble.jpg");
+  }
+  .box.hovered {
+    border: 2px dashed #333;
+  } */
+
+  footer{
+    
+    background: black;
+    height: 100%;
+    width: 100%;
+    font-family: "open sans";
+    padding-top: 40px;
+    color: orangered;
+    text-align: center;
+}
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.footer-content h3{
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 3rem;
+}
+.footer-content p{
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 28px;
+    font-size: 14px;
+}
+.socials{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:1rem 0 3rem 0;
+}
+.socials a{
+    text-decoration: none;
+    color: rgb(99, 3, 99);
+}
+.socials li{
+    margin: 0 10px;
+}
+.socials a{
+    font-size: 1.1rem;
+    transition: color .4s ease;
+}
+.socials a:hover{
+    color: plum;
+
+}
+.footer-bottom{
+    background: black;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+}
+.footer-bottom p{
+    font-size: 14px;
+    word-spacing: 2px;
+    text-transform: capitalize;
+}
+.footer-bottom span{
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200;
+}
