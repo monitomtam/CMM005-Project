@@ -81,10 +81,20 @@ ul li a:hover{
   height: 100vh;
 
 }
+.column1 {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
 
 .column {
   float: left;
   width: 33.33%;
+  padding: 5px;
+}
+.column2{
+  float: left;
+  width: 25%;
   padding: 5px;
 }
 .row::after {
