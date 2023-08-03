@@ -9,7 +9,7 @@
     </head>
     <body>
       
-        <!--START OF HEADER-->
+        <!--START OF HEADER
         <header>
     
      <img src="asset/images/E.G.O.Logo.jpg" alt="Educational Games Online" width="50" height="100">
@@ -20,7 +20,7 @@
     <li><a href ="marvel.html">Marvel</a></li>
     <li><a href ="environment.html">Environments</a></li>
 </ul>
-    <a href="login.html" class="button">Signup</a>
+    <a href="login.html" class="button">Signup</a>-->
     
         </header>
         <!--END OF HEADER-->
@@ -28,10 +28,24 @@
          <!--START OF MAIN-->
          <main>
             <section class="sections">
-                <a href ="thegame.html"><img src="asset/images/games.jpg"  alt="Game Picture" style="width: 100%"></a>
+              <!--  <a href ="thegame.html"><img src="asset/images/games.jpg"  alt="Game Picture" style="width: 100%"></a>-->
                 <h3>Games</h3>
                 <!--provide instuction on the games-->
-                
+                <div class="wrapper2">
+                    <h1>Guess the Word</h1>
+                    <div class="content">
+                      <input type="text" class="typing-input" maxlength="1">
+                      <div class="inputs"></div>
+                      <div class="details">
+                        <p class="hint">Hint: <span></span></p>
+                        <p class="guess-left">Remaining guesses: <span></span></p>
+                        <p class="wrong-letter">Wrong letters: <span></span></p>
+                      </div>
+                      <button class="reset-btn">Reset Game</button>
+                    </div>
+                  </div>
+                  <script src="js/words.js"></script>
+                  <script src="js/script.js"></script>
                 
                 <br>
                 <p> If you can find the solution then give your self a (thumbsup) otherwise keep trying</p>
