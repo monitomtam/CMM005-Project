@@ -1,28 +1,202 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - codingnepalweb.com -->
-<html lang="en">
-    <link rel="stylesheet" href="asset/css/style.css">
-    <link rel="stylesheet" href="asset/css/unsemantic-grid-responsive-tablet.css">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drag & Drop in JavaScript</title>
-    <link rel="stylesheet" href="style.css" />
-   <script src="script.js" defer></script>
-  </head>
-  <body>
-    <section class="container">
-      <div class="box">
+<html lang ="en">
+    <head>
+      <meta charset="UTF-8">
+        <title>Game Website for Kids</title>
+        <link rel="stylesheet" href="asset/css/style.css">
+        <link rel="stylesheet" href="asset/css/unsemantic-grid-responsive-tablet.css">
+        <style>
+            body {
+                margin: 30px;
+            }
+            * {
+                font-family: 'Roboto', sans-serif;
+            }
+            p, li {
+                font-size: 18px;
+            }
+            .container {
+                display: flex;
+                gap: 15px;
+            }
+            .dropzone {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 34px;
+                border: 2px solid palevioletred;
+                background-color: #94DBFD;
+                border-radius: 10px;
+                transition: transform 0.5s;
+            }
+            .dropzone.dragover {
+                transform: scale(0.9);
+            }
+
+
+            
+            /* Part 3 */
+            .interact.dropzone {
+                width: 350px;
+                height: 350px;
+                transition: background-color 0.5s;
+            }
+            .drop-target {
+                background-color: #BCF8B9;
+            }
+            .draggable {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 34px;
+                border: 2px solid palevioletred;
+                background-color: #94DBFD;
+                border-radius: 10px;
+                height: 80px;
+                width: 220px;
+                margin-bottom: 50px;
+                touch-action: none;
+            }
+            .draggable.can-drop {
+                background-color: #67D967;
+            }
+        </style>
+        <script src="script.js"></script>
+
+        <!-- Part 3 -->
+        <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+    </head>
+    <body>
+      <header>
+        <img src="asset/images/E.G.O.Logo.jpg" alt="Educational Games Online" width="50" height="100">
+<ul>
+    <li><a href ="index.html">Home</a></li>
+    <li><a href ="about.html">About</a></li>
+    <li><a href ="games.html">Games</a></li>
+    <li><a href ="marvel.html">Marvel</a></li>
+    <li><a href ="environment.html">Environments</a></li>
+</ul>
+    <a href="login.html" class="button">Signup</a>
+
+    <br>
+    <br>
+      </header>
+      <main>
+        <h1>DRAG A WORD TO ITS MEANING</h1>
+        <h2>Hint:If the small box changes color in the big box CORRECT</h2>
         
-        <div class="image" draggable="true"><img src="asset/images/bubble.jpg"  width="100%" height="155"></div> 
-         
+
+        
+        <div class="draggable itemB">Carbonation</div>
+        <div class="draggable itemD">Carbondioxide</div>
+        <div class="draggable itemC">Viscosity</div>
+        <div class="draggable itemA">Bubble</div>
+       
+
+        <div class="container">
+            <div id="dropzoneA" class="interact dropzone">Small balls of air or gas in a liquid.</div>
+            <div id="dropzoneB" class="interact dropzone">Carbonation is the saturation of a liquid with CO2 gas.</div>
+            <div id="dropzoneC" class="interact dropzone">State of being thick, sticky, and semi-fluid in consistency, due to internal friction</div>
+            <div id="dropzoneD" class="interact dropzone">A colourless, odourless gas produced by burning carbon and organic compounds and by respiration.</div>
+        </div>
+
+        <script>
+          
+function dragMoveListener(event) {
+    var target = event.target;
+    var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+    var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+    target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+}
+
+function onDragEnter(event) {
+    var draggableElement = event.relatedTarget;
+    var dropzoneElement = event.target;
+    dropzoneElement.classList.add("drop-target");
+    draggableElement.classList.add("can-drop");
+}
+
+function onDragLeave(event) {
+    event.target.classList.remove("drop-target");
+    event.relatedTarget.classList.remove("can-drop");
+}
+
+function onDrop(event) {
+    event.target.classList.remove("drop-target");
+}
+
+document.addEventListener("DOMContentLoaded", event => {
+    window.dragMoveListener = dragMoveListener;
+
+    interact("#dropzoneA").dropzone({
+        accept: ".itemA",
+        overlap: 0.75,
+        ondragenter: onDragEnter,
+        ondragleave: onDragLeave,
+        ondrop: onDrop
+    });
+
+    interact("#dropzoneB").dropzone({
+        accept: ".itemB",
+        overlap: 0.75,
+        ondragenter: onDragEnter,
+        ondragleave: onDragLeave,
+        ondrop: onDrop
+    });
+
+    interact("#dropzoneC").dropzone({
+        accept: ".itemC",
+        overlap: 0.75,
+        ondragenter: onDragEnter,
+        ondragleave: onDragLeave,
+        ondrop: onDrop
+    });
+
+    interact("#dropzoneD").dropzone({
+        accept: ".itemD",
+        overlap: 0.75,
+        ondragenter: onDragEnter,
+        ondragleave: onDragLeave,
+        ondrop: onDrop
+    });
+
+    interact(".draggable").draggable({
+        inertia: true,
+        autoScroll: true,
+        modifiers: [
+            interact.modifiers.restrictRect({
+                restriction: "parent",
+                endOnly: true
+            })
+        ],
+        listeners: { 
+            move: dragMoveListener
+        }
+    });
+});
+        </script>
+        </main>
+
+        <!--START OF FOOTER-->
+        <footer>
+
+          <ul>
+              <li><a href="Privacy.html">Privacy</a></li>
+              <li><a href ="Parental.html"> Parental Guidiance</a></li>
+              <li><a href ="Contact.html"> Contact </a></li>
+              <li><a href ="Terms.html"> Terms of Use</a></li>
+              <li><a href ="Children Online Privacy.html"> Children Online Privacy</a></li>
+              <li><a href ="Category.html"> Category</a></li>  
+          </ul>
+      
+      
+      <div class="footer-bottom">
+          <p>copyright &copy;2023 RGU.designed by <span>Monisola</span></p>
       </div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-    </section>
-  </body>
+              </footer>
+              <!--END OF FOOTER-->
+    </body>
 </html>

@@ -1,54 +1,202 @@
 <!DOCTYPE html>
 <html lang ="en">
     <head>
-        <meta charset="UTF-8">
-        <title> Game Website for Kids</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+      <meta charset="UTF-8">
+        <title>Game Website for Kids</title>
         <link rel="stylesheet" href="asset/css/style.css">
         <link rel="stylesheet" href="asset/css/unsemantic-grid-responsive-tablet.css">
+        <style>
+            body {
+                margin: 30px;
+            }
+            * {
+                font-family: 'Roboto', sans-serif;
+            }
+            p, li {
+                font-size: 18px;
+            }
+            .container {
+                display: flex;
+                gap: 15px;
+            }
+            .dropzone {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 34px;
+                border: 2px solid palevioletred;
+                background-color: #94DBFD;
+                border-radius: 10px;
+                transition: transform 0.5s;
+            }
+            .dropzone.dragover {
+                transform: scale(0.9);
+            }
+
+
+            
+            /* Part 3 */
+            .interact.dropzone {
+                width: 350px;
+                height: 350px;
+                transition: background-color 0.5s;
+            }
+            .drop-target {
+                background-color: #BCF8B9;
+            }
+            .draggable {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 34px;
+                border: 2px solid palevioletred;
+                background-color: #94DBFD;
+                border-radius: 10px;
+                height: 80px;
+                width: 220px;
+                margin-bottom: 50px;
+                touch-action: none;
+            }
+            .draggable.can-drop {
+                background-color: #67D967;
+            }
+        </style>
+        <script src="script.js"></script>
+
+        <!-- Part 3 -->
+        <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
     </head>
     <body>
-      
-        <!--START OF HEADER-->
-        <header>
-            <img src="asset/images/E.G.O.Logo.jpg" alt="Educational Games Online" width="50" height="100">   
-
+      <header>
+        <img src="asset/images/E.G.O.Logo.jpg" alt="Educational Games Online" width="50" height="100">
 <ul>
     <li><a href ="index.html">Home</a></li>
-    <li><a href ="About.html">About</a></li>
-    <li><a href ="Games.html">Games</a></li>
-    <li><a href ="Marvel.html">Marvel</a></li>
-    <li><a href ="environment.html">Environments</a></li>   
+    <li><a href ="about.html">About</a></li>
+    <li><a href ="games.html">Games</a></li>
+    <li><a href ="marvel.html">Marvel</a></li>
+    <li><a href ="environment.html">Environments</a></li>
 </ul>
-<a href="login.html" class="button">Signup</a>
+    <a href="login.html" class="button">Signup</a>
 
-        </header>
-        <!--END OF HEADER-->
+    <br>
+    <br>
+      </header>
+      <main>
+        <h1>DRAG A WORD TO ITS MEANING</h1>
+        <h2>Hint:If the small box changes color in the big box CORRECT</h2>
+        
 
-         <!--START OF MAIN-->
-         <main>
-            <h2>DRAG A WORD TO ITS MEANING</h2>
+        
+        <div class="draggable itemB">Electronic</div>
+        <div class="draggable itemD">CPU</div>
+        <div class="draggable itemC">Chips</div>
+        <div class="draggable itemA">Monitor</div>
+       
 
-         </main>
-         <!--END OF MAIN-->
-
-       <!--START OF FOOTER-->
-       <footer>
-        <div>
-            <ul>
-                <li><a href="Privacy.html">Privacy</a></li>
-                <li><a href ="Parental.html"> Parental Guidiance</a></li>
-                <li><a href ="Contact.html"> Contact </a></li>
-                <li><a href ="Terms.html"> Terms of Use</a></li>
-                <li><a href ="Children Online Privacy.html"> Children Online Privacy</a></li>
-                <li><a href ="Category.html"> Category</a></li>  
-            </ul>
+        <div class="container">
+            <div id="dropzoneA" class="interact dropzone">A device used for observing, checking, or keeping a continuous record of something.</div>
+            <div id="dropzoneB" class="interact dropzone"> A device having or operating with components such as microchips and transistors that control and direct electric currents.</div>
+            <div id="dropzoneC" class="interact dropzone">A small piece of semiconducting material on which an integrated circuit is embedded.</div>
+            <div id="dropzoneD" class="interact dropzone">Central Processing Unit.</div>
         </div>
-        </div>
-        <div class="footer-bottom">
-            <p>copyright &copy;2023 RGU.designed by <span>Monisola</span></p>
-        </div>
-                </footer>
-                <!--END OF FOOTER-->
-         </body>
-        </html> 
+
+        <script>
+          
+function dragMoveListener(event) {
+    var target = event.target;
+    var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+    var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+    target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+}
+
+function onDragEnter(event) {
+    var draggableElement = event.relatedTarget;
+    var dropzoneElement = event.target;
+    dropzoneElement.classList.add("drop-target");
+    draggableElement.classList.add("can-drop");
+}
+
+function onDragLeave(event) {
+    event.target.classList.remove("drop-target");
+    event.relatedTarget.classList.remove("can-drop");
+}
+
+function onDrop(event) {
+    event.target.classList.remove("drop-target");
+}
+
+document.addEventListener("DOMContentLoaded", event => {
+    window.dragMoveListener = dragMoveListener;
+
+    interact("#dropzoneA").dropzone({
+        accept: ".itemA",
+        overlap: 0.75,
+        ondragenter: onDragEnter,
+        ondragleave: onDragLeave,
+        ondrop: onDrop
+    });
+
+    interact("#dropzoneB").dropzone({
+        accept: ".itemB",
+        overlap: 0.75,
+        ondragenter: onDragEnter,
+        ondragleave: onDragLeave,
+        ondrop: onDrop
+    });
+
+    interact("#dropzoneC").dropzone({
+        accept: ".itemC",
+        overlap: 0.75,
+        ondragenter: onDragEnter,
+        ondragleave: onDragLeave,
+        ondrop: onDrop
+    });
+
+    interact("#dropzoneD").dropzone({
+        accept: ".itemD",
+        overlap: 0.75,
+        ondragenter: onDragEnter,
+        ondragleave: onDragLeave,
+        ondrop: onDrop
+    });
+
+    interact(".draggable").draggable({
+        inertia: true,
+        autoScroll: true,
+        modifiers: [
+            interact.modifiers.restrictRect({
+                restriction: "parent",
+                endOnly: true
+            })
+        ],
+        listeners: { 
+            move: dragMoveListener
+        }
+    });
+});
+        </script>
+        </main>
+
+        <!--START OF FOOTER-->
+        <footer>
+
+          <ul>
+              <li><a href="Privacy.html">Privacy</a></li>
+              <li><a href ="Parental.html"> Parental Guidiance</a></li>
+              <li><a href ="Contact.html"> Contact </a></li>
+              <li><a href ="Terms.html"> Terms of Use</a></li>
+              <li><a href ="Children Online Privacy.html"> Children Online Privacy</a></li>
+              <li><a href ="Category.html"> Category</a></li>  
+          </ul>
+      
+      
+      <div class="footer-bottom">
+          <p>copyright &copy;2023 RGU.designed by <span>Monisola</span></p>
+      </div>
+              </footer>
+              <!--END OF FOOTER-->
+    </body>
+</html>

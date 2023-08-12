@@ -101,71 +101,13 @@
                             if (document.getElementById('correct3').checked) {
                                 score++;
                             }
-                            alert("your score is: "+ score);
+                            alert("Weldone champ your score is: "+ score );
                         }
                     </script>
                
                 <p>If you get the answer correctly give your self a <i class="fa-solid fa-thumbs-up"></i> otherwise try again</p>
 </div>
-<!--
-            <div class="container2">
-                <div class="container2 box">
-                    Quiz Application <br>
-                    <div id="question-title">QUESTION TITLE </div> <br>
-                    <div id="option-list">
-                        <input type= "radio" id="0" name="0">Option value</div>
-                    <div id="score-area">Score Area</div>
-                    <button id="submit">SUBMIT</button> <br>
-                    <button id="start">START</button> <br>
-                    <button id="play-again">PLAY AGAIN</button>
-                    
-                </div>
-            </div>
--->
-            <!--adding database:-->
- <!--           <script src="db.js"></script>
-            <sript>
-                // defining variables
-                let questionNo = 0;
-                let score = 0;
-                let question_title = document.getElementById('question-title');
-                let option_list = document.getElementById('option_list');
-                let score_area = document.getElementById('score-area');
-                let btn_submit = document.getElementById('submit');
-                let start = document.getElementById('start');
-                let play_again = document.getElementById('play-again');
 
-            
-            //oncreate we need to hide few items
-             
-            hideItems('question_title');
-            hideItems('option_list');
-            hideItems('btn_submit');
-            hideItems('play_again');
-            hideItems('score_area');
-
-            //start.addEventListener('click', function () {
-                show(question_title);
-                show(option_list);
-                show(btn_submit);
-                loadQuestions();
-            })
-            function loadQuestion() {
-                // check if question are available to ask:
-                if (questionNo < data.lenght) {
-                    let q = data[questionNo].opttion; // array of options
-
-                    // display questions:
-                    question_title.innerText = q;
-
-                    // display options:
-                    for(let i=0; i < optionsArray.lenght; i++) {
-                        option_list.innerHTML = option_list.inner.HTML +
-                    }
-                }
-            }
-            
-        </sript>
     
                 <h3>Learn Some Vocabulary</h3>
                 <p> Circle           Diagonal

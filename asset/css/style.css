@@ -163,95 +163,10 @@ ul li a:hover{
   margin-right: 10;
   font-size: 600;
   transform: translateY(-20px);
-}*/
-
-.wrapper {
-  position: absolute;
-  width: 90%;
-  max-width: 37em;
-  background-color: #ffffff ;
-  padding: 7em 3em;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  border-radius: 1em;
-}
-
-.controls-container {
-  background-color: #7786f5;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  top: 0;
-}
-#start {
-  font-size: 1.2em;
-  padding: 1em 3em;
-  background-color: #ffffff;
-  border: none;
-  outline: none;
-  border-radius: 2em;
-  cursor: pointer;
-}
-#letter-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8em 0.4em;
-  justify-content: center;
-  margin-top: 2em;
-}
-#letter-container button {
-  background-color: #ffffff;
-  border: 2px solid #7786f5;
-  color: #7786f5;
-  outline: none;
-  border-radius: 0.3em;
-  cursor: pointer;
-  height: 3em;
-  width: 3em;
-}
-#letter-container .correct {
-  background-color: #008000;
-  color: #ffffff;
-  border: 2px solid #008000;
-}
-#letter-container .incorrect {
-  background-color: #8a8686;
-  color: #ffffff;
-  border: 2px solid #8a8686;
-}
-.hint-ref {
-  margin-bottom: 1em;
-}
-.hint-ref span {
-  font-weight: 600;
-}
-#chanceCount {
-  margin: 1em 0;
-  position: absolute;
-  top: 0.62em;
-  right: 2em;
-}
-#word {
-  font-weight: 600;
-  margin: 1em 0 2em 0;
-}
-#word span {
-  text-transform: uppercase;
-  font-weight: 400;
-}
-.hide {
-  display: none;
 }
 
 
-/*
+
   .container2{
     width: 100%;
     min-height: 100vh;
@@ -283,16 +198,16 @@ ul li a:hover{
 
 
 
-  body {
+ /* body {
     height: 100%;
     background-image: linear-gradient(#7B9F35, #226666);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  }
-  */
-  .game {
+  }*/
+  
+  /*.game {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -318,7 +233,7 @@ ul li a:hover{
     border: 1px solid black;
     outline: none;
     cursor: pointer;
-  }
+  }*/
   
   .footer {
     margin-top: 15px;
@@ -386,14 +301,7 @@ ul li a:hover{
     border: 2px dashed #333;
   } */
 /* word guessing game css below */
-  body{
-    display: flex;
-    padding: 0 10px;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-    background: #1BB295;
-  }
+
   .wrapper2{
     width: 430px;
     background: #fff;
