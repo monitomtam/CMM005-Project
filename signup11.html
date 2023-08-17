@@ -1,32 +1,72 @@
 <!DOCTYPE html>
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1"/>
-    <title>LionsHead</title>
-    <link rel="stylesheet" href="assest/css/style.css">
-    <link rel="stylesheet" href="assest/css/unsemantic-grid-responsive-tablet.css">
-   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Form | CodingNepal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
-
-
 <body>
-<input type="text">, <input type="password">
+  <input type="checkbox" id="toggle">
+  <label for="toggle" class="show-btn">Show Modal</label>
+  <div class="wrapper">
+    <label for="toggle">
+    <i class="cancel-icon fas fa-times"></i>
+    </label>
+    <div class="icon"><i class="far fa-envelope"></i></div>
+    <div class="content">
+      <header>Become a Subscriber</header>
+      <p>Subscribe to our blog and get the latest updates straight to your inbox.</p>
+    </div>
+    <form action="index.php" method="POST">
 
-<body>
-<div class="box">
-    <h2>Signup</h2>
-    <form action=""  method="post" class="login">
-        <label for=""> Enter your Email</label>
-        <br>
-        <input type="email" name="email" id="email">
-        <br>
-       <label for=""> Enter your password</label> 
-       <br>
-       <input type="password" name="password" id="password">
-       <br>
-       <button class="button" type="submit"> submit </button>
-       <a href="upload.html">Signup for a Newsletter</a>
-       
+    <?php 
+   if(isset($_POST)
+    if(isset($_POST['subscribe'])){ //if subscribe btn clicked
+      $userEmail = $_POST['email']; //getting user entered email
+      if(filter_var($userEmail, FILTER_VALIDATE_EMAIL)){ //validating user email
+        $subject = "Thanks for Subscribing us - CodingNepal";
+        $message = "Thanks for subscribing to our blog. You'll always receive updates from us. And we won't share and sell your information.";
+        $sender = "From: shahiprem7890@gmail.com";
+        //php function to send mail
+        if(mail($userEmail, $subject, $message, $sender)){
+          ?>
+           <!-- show sucess message once email send successfully -->
+          <div class="alert success-alert">
+            <?php echo "Thanks for Subscribing us." ?>
+          </div>
+          <?php
+          $userEmail = "";
+        }else{
+          ?>
+          <!-- show error message if somehow mail can't be sent -->
+          <div class="alert error-alert">
+          <?php echo "Failed while sending your mail!" ?>
+          </div>
+          <?php
+        }
+      }else{
+        ?>
+        <!-- show error message if user entered email is not valid -->
+        <div class="alert error-alert">
+          <?php echo "$userEmail is not a valid email address!" ?>
+        </div>
+        <?php
+      }
+    }
+    ?>
+      <div class="field">
+        <input type="text" class="email" name="email" placeholder="Email Address" required value="<?php echo $userEmail ?>">
+      </div>
+      <div class="field btn">
+        <div class="layer"></div>
+        <button type="submit" name="subscribe">Subscribe</button>
+      </div>
     </form>
-</div>
+    <div class="text">We do not share your information.</div>
+  </div>
+
+</body>
+</html>
